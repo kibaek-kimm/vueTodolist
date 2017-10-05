@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#app{
+    width: 100%;
+    min-width: 400px;
+    padding: 30px 10px 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#app .header{
+    margin-bottom: 10px;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+}
+
+#app .header input{
+    width: 100%;
+}
+
+#app .header > button{
+    margin-left: 10px;
+}
