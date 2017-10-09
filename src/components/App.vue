@@ -1,20 +1,29 @@
 <template>
     <div id="app">
-        <Header />
+        <TodoHeader />
         <TodoList
-            v-bind:passed-todo="$store.state.todos"
+            v-bind:passed-todo="todos"
         />
     </div>
 </template>
 
 <script>
-    import Header from './Header.vue'
+    import TodoHeader from './TodoHeader.vue'
     import TodoList from './TodoList.vue'
 
     export default {
+        data(){
+            return {
+                todos : []
+            }
+        },
         components : {
-            Header,
+            TodoHeader,
             TodoList
+        },
+        created(){
+            this.todos = this.$store.state.todos;
+            console.log(this.todos);
         }
     }
 </script>

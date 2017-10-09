@@ -1,8 +1,7 @@
 <template>
     <el-table
-        v-bind:data="todoData"
-        style="width: 100%"
-        v-bind:row-class-name="tableRowClassName">
+        v-bind:data="todos"
+        style="width: 100%">
     >
         <el-table-column
             prop="num"
@@ -36,18 +35,12 @@
         props : ['passedTodo'],
         data(){
             return {
-                todoData : []
+                todos : []
             }
         },
-        methods : Object.assign({},
-        mapActions(['deleteTodo']),
-        {
-            tableRowClassName(){
-
-            }
-        }),
+        methods :mapActions(['deleteTodo']),
         created(){
-            this.todoData = this.passedTodo
-        }
+            this.todos = this.passedTodo
+        },
     }
 </script>

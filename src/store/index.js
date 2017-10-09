@@ -6,11 +6,12 @@ import { mutations } from './mutations'
 Vue.use(Vuex);
 
 const state = {
+    todosOrigin : [],
     todos : []
 };
 
 export default new Vuex.Store({
     state,
     mutations,
-    actions  
+    actions
 });
