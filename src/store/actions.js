@@ -1,12 +1,12 @@
 import * as types from './mutation-types'
 
 export const addTodo = async ({commit} , contents) => {
-    const result = commit(types.ADD_TODO , contents);
+    const result = await commit(types.ADD_TODO , contents);
     return result;
 }
 
 export const deleteTodo = async ({commit} , index) => {
-    const result = commit(types.DELETE_TODO , index);
+    const result = await commit(types.DELETE_TODO , index);
     return result;
 }
 
