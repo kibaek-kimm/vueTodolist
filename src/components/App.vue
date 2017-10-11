@@ -1,8 +1,10 @@
 <template>
     <div id="app">
-        <TodoHeader />
+        <TodoHeader
+            v-bind:search-value="$store.state.searchValue"
+        />
         <TodoList
-            v-bind:passed-todo="$store.state.todos"
+            v-bind:passed-todo="todos"
         />
     </div>
 </template>
@@ -12,9 +14,17 @@
     import TodoList from './TodoList.vue'
 
     export default {
+        data(){
+            return {
+                todos : []
+            }
+        },
         components : {
             TodoHeader,
             TodoList
+        },
+        created(){
+            this.todos = this.$store.state.todos;
         }
     }
 </script>

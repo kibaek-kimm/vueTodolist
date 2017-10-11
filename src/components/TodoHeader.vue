@@ -2,7 +2,7 @@
     <div class="header">
         <el-input
             placeholder="할일을 입력 해주세요."
-            v-model="todoData"
+            v-model="searchValue"
             v-on:change="handleInput"
         ></el-input>
         <el-button
@@ -18,38 +18,44 @@
     import { mapActions } from 'vuex'
 
     export default {
+        props : ['passedSearchValue'],
         data(){
             return {
-                todoData : ''
+                searchValue : ''
             }
         },
         methods : Object.assign({},mapActions([
             'addTodo',
-            'setSearchedTodos'
+            'setSearchedTodos',
+            'setSearchValue'
         ]),
         {
             validateTodo(){
-                let isExsist = this.$store.state.todosOrigin.filter(value => {
-                    return value.contents == this.todoData;
+                let isExsist = this.todos.filter(value => {
+                    return value.contents == this.searchValue;
                 });
 
                 if(isExsist.length == 0){
-                    this.addTodo(this.todoData);
-                    this.todoData = '';
+                    this.addTodo(this.searchValue);
+                    this.searchValue = '';
+                    this.setSearchValue('');
                 }else{
                     alert('같은 할일이 이미 존재합니다.')
                 }
             },
             handleInput(){
                 const searchedTodos = [];
-                this.$store.state.todosOrigin.map( value => {
-                    if(value.contents.includes(this.todoData)){
-                        searchedTodos.push(value);
-                    }
-                });
-
-                this.setSearchedTodos(searchedTodos);
+                // this.$store.state.todos.map( value => {
+                //     if(value.contents.includes(this.todoData)){
+                //         searchedTodos.push(value);
+                //     }
+                // });
+                this.setSearchValue(this.searchValue);
             }
-        })
+        }),
+        created(){
+            this.todos = this.$store.state.todos;
+            this.searchValue = this.passedSearchValue;
+        }
     }
 </script>

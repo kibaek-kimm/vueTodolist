@@ -15,3 +15,7 @@ export const setSearchedTodos = ({commit} , searchedTodos) => {
         commit(types.SET_SEARCHED_TODOS , searchedTodos);
     }
 }
+
+export const setSearchValue = ({commit} , value) => {
+    commit(types.SET_SEARCH_VALUE , value);
+}

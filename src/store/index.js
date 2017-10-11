@@ -6,8 +6,9 @@ import { mutations } from './mutations'
 Vue.use(Vuex);
 
 const state = {
-    todosOrigin : [],
-    todos : []
+    todos : [],
+    searchValue : '',
+    itemNumber : 1
 };
 
 export default new Vuex.Store({
