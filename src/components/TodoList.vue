@@ -4,14 +4,14 @@
         style="width: 100%">
     >
         <el-table-column
-            prop="num"
+            prop="id"
             label="순서"
             width="80"
             current-row-key>
         </el-table-column>
 
         <el-table-column
-            prop="contents"
+            prop="title"
             label="할일">
         </el-table-column>
         <el-table-column

@@ -1,10 +1,11 @@
 import * as types from './mutation-types';
 
 export const mutations = {
-    [types.ADD_TODO](state , contents){
+    [types.ADD_TODO](state , title){
+        console.log(state.todos);
         state.todos.push({
-            num : state.itemNumber,
-            contents
+            id : state.itemNumber,
+            title
         });
         state.itemNumber++;
     },
@@ -16,5 +17,8 @@ export const mutations = {
     },
     [types.SET_SEARCH_VALUE](state , value){
         state.searchValue = value;
+    },
+    [types.SET_TODOS](state , todos){
+        state.todos.push(...todos)
     }
 }

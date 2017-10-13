@@ -14,31 +14,40 @@
         //     return 'KIBAEK KIM';
         // });
 
-        const getName = () => {
-            return 'KIBAEK KIM';
-        };
-
-        const asFn = async () => {
-            const a = await getName();
-            return a;
-        };
-
-
-
-        //Promise
-        // asFn().then(name => {
-        //     return name
-        // })
+        // const getName = () => {
+        //     return 'KIBAEK KIM';
+        // };
+        //
+        // const asFn = async () => {
+        //     const a = await getName();
+        //     return a;
+        // };
+        //
+        //
+        //
+        // //Promise
+        // // asFn().then(name => {
+        // //     return name
+        // // })
+        // // .then(name => {
+        // //     console.log(name);
+        // // })
+        //
+        //
+        // //Await / Async
+        // asFn()
         // .then(name => {
         //     console.log(name);
         // })
 
+        const todos = [];
 
-        //Await / Async
-        asFn()
-        .then(name => {
-            console.log(name);
+
+        fetch('https://jsonplaceholder.typicode.com/todos' , {
+            method : 'POST'
         })
+        .then(response => response.json())
+        .then(json => todos = json);
 
 
 

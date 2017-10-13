@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
+    import { mapActions , mapGetters } from 'vuex'
 
     export default {
         props : ['passedSearchValue'],
@@ -44,18 +44,16 @@
                 }
             },
             handleInput(){
-                const searchedTodos = [];
-                // this.$store.state.todos.map( value => {
-                //     if(value.contents.includes(this.todoData)){
-                //         searchedTodos.push(value);
-                //     }
-                // });
                 this.setSearchValue(this.searchValue);
             }
         }),
+        // computed : {
+        //     getSpecificTodos : this.$store.getters.getSpecificTodos;
+        // },
         created(){
             this.todos = this.$store.state.todos;
             this.searchValue = this.passedSearchValue;
+            console.log(this.getSpecificTodos);
         }
     }
 </script>
