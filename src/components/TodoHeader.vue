@@ -2,7 +2,7 @@
     <div class="header">
         <el-input
             placeholder="할일을 입력 해주세요."
-            v-model="searchValue"
+            v-model="inputedTodo"
             v-on:change="handleInput"
         ></el-input>
         <el-button
@@ -18,42 +18,52 @@
     import { mapActions , mapGetters } from 'vuex'
 
     export default {
-        props : ['passedSearchValue'],
+        props : ['passedinputedTodo'],
         data(){
             return {
-                searchValue : ''
+                inputedTodo : '',
+                todos : []
             }
         },
+        computed : mapGetters([
+            'getTodos'
+        ]),
         methods : Object.assign({},mapActions([
             'addTodo',
             'setSearchedTodos',
-            'setSearchValue'
+            'setTodos'
         ]),
         {
             validateTodo(){
                 let isExsist = this.todos.filter(value => {
-                    return value.contents == this.searchValue;
+                    return value.contents == this.inputedTodo;
                 });
 
                 if(isExsist.length == 0){
-                    this.addTodo(this.searchValue);
-                    this.searchValue = '';
-                    this.setSearchValue('');
+                    this.addTodo(this.inputedTodo);
+                    this.inputedTodo = '';
                 }else{
                     alert('같은 할일이 이미 존재합니다.')
                 }
             },
             handleInput(){
-                this.setSearchValue(this.searchValue);
+                let filteredTodos;
+                if(this.inputedTodo !== ''){
+                    filteredTodos = this.todos.filter( value => {
+                        return value.title.includes(this.inputedTodo);
+                    });
+                }else{
+                    filteredTodos = this.todos;
+                }
+
+                console.log(filteredTodos);
+
+                this.setTodos(filteredTodos);
             }
         }),
-        // computed : {
-        //     getSpecificTodos : this.$store.getters.getSpecificTodos;
-        // },
         created(){
-            this.todos = this.$store.state.todos;
-            this.searchValue = this.passedSearchValue;
-            console.log(this.getSpecificTodos);
+            this.todos = this.getTodos;
+            this.inputedTodo = this.passedinputedTodo;
         }
     }
 </script>

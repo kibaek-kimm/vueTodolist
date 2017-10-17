@@ -21,14 +21,14 @@
             }
         },
         methods : mapActions([
-            'setTodos'
+            'initTodos'
         ]),
         components : {
             TodoHeader,
             TodoList
         },
         created(){
-            this.setTodos();
+            this.initTodos();
             this.todos = this.$store.state.todos;
             console.log('in App.vue');
             console.log(this.todos);

@@ -15,10 +15,10 @@ export const mutations = {
     [types.SET_SEARCHED_TODOS](state , searchedTodos){
 
     },
-    [types.SET_SEARCH_VALUE](state , value){
-        state.searchValue = value;
+    [types.INIT_TODOS](state , todos){
+        state.todos.splice(0, ...todos)
     },
     [types.SET_TODOS](state , todos){
-        state.todos.push(...todos)
+        state.todos.splice(0, ...todos)
     }
 }

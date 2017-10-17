@@ -16,11 +16,7 @@ export const setSearchedTodos = ({commit} , searchedTodos) => {
     }
 }
 
-export const setSearchValue = ({commit} , value) => {
-    commit(types.SET_SEARCH_VALUE , value);
-}
-
-export const setTodos = ({commit} , contents) => {
+export const initTodos = ({commit} , contents) => {
     // fetch('https://jsonplaceholder.typicode.com/todos?userId=2',{
     fetch('https://jsonplaceholder.typicode.com/todos',{
         method : 'GET'
@@ -28,6 +24,10 @@ export const setTodos = ({commit} , contents) => {
     .then(response => response.json())
     .then(json => {
         console.log('THis is last then');
-        commit(types.SET_TODOS , json);
+        commit(types.INIT_TODOS , json);
     });
 }
+
+export const setTodos = ({commit} , todos) => {
+    commit(types.SET_TODOS , todos);
+};

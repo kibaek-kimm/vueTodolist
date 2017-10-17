@@ -9,7 +9,6 @@ Vue.use(Vuex);
 
 const state = {
     todos : [],
-    searchValue : '',
     itemNumber : 1
 };
 

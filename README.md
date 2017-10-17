@@ -59,8 +59,7 @@ src
 
 ## Vuex 구조
 #### State
-* todos (Array) : <b>렌더링 용으로 사용하는 todo 데이터</b>
-* todosOrigin (Array) : <b>원본 데이터를 유지하는 데이터</b>
+* todos (Array) : <b>Todo 정보를 담고있는 배열
 
 #### Actions / Mutations
 * addTodo (async) : <b>Todo를 저장하는 함수</b>

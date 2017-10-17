@@ -1,8 +1,3 @@
-export const getSpecificTodos = (state) => {
-    return [
-        {
-            id : 15,
-            title : 'TEST'
-        }
-    ]
+export const getTodos = (state ) => {
+    return state.todos;
 }
