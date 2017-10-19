@@ -18,6 +18,7 @@
     import { mapActions , mapGetters } from 'vuex'
 
     export default {
+        props : ['passedTodos'],
         data(){
             return {
                 inputedTodo : '',
@@ -48,6 +49,11 @@
             },
             handleInput(){
                 let filteredTodos;
+
+                if(this.todos.length == 0){
+                    this.todos = this.$store.state.todos.slice();
+                }
+
                 if(this.inputedTodo !== ''){
                     filteredTodos = this.todos.filter( value => {
                         return value.title.includes(this.inputedTodo);
@@ -60,8 +66,8 @@
             }
         }),
         created(){
-            this.todos = this.getTodos;
-            console.log(`In created ${this.todos}`);
+            // this.todos = this.passedTodos;
+            // console.log(`In created ${this.todos}`);
         }
     }
 </script>

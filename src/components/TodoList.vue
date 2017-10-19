@@ -29,10 +29,12 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
+    import { mapActions , mapGetters } from 'vuex'
 
     export default {
-        props : ['passedTodo'],
+        computed : mapGetters([
+            'getTodos'
+        ]),
         data(){
             return {
                 todos : []
@@ -40,7 +42,7 @@
         },
         methods :mapActions(['deleteTodo']),
         created(){
-            this.todos = this.passedTodo
+            this.todos = this.getTodos;
         },
     }
 </script>

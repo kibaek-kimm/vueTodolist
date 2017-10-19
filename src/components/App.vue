@@ -1,23 +1,27 @@
 <template>
     <div id="app">
-        <TodoHeader />
-        <TodoList
-            v-bind:passed-todo="todos"
+        <TodoHeader
+            v-bind:passed-todos="passedTodos"
         />
+        <TodoList />
     </div>
 </template>
 
 <script>
-    import { mapActions } from 'vuex';
+    import { mapActions , mapGetters } from 'vuex';
     import TodoHeader from './TodoHeader.vue'
     import TodoList from './TodoList.vue'
 
     export default {
         data(){
             return {
-                todos : []
+                todos : [],
+                passedTodos : []
             }
         },
+        computed : mapGetters([
+            'getTodos'
+        ]),
         methods : mapActions([
             'initTodos'
         ]),
@@ -27,8 +31,7 @@
         },
         created(){
             this.initTodos();
-            this.todos = this.$store.state.todos;
-            console.log('in App.vue');
+            this.todos = this.getTodos;
             console.log(this.todos);
         }
     }
