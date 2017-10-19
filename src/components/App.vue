@@ -1,8 +1,6 @@
 <template>
     <div id="app">
-        <TodoHeader
-            v-bind:search-value="$store.state.searchValue"
-        />
+        <TodoHeader />
         <TodoList
             v-bind:passed-todo="todos"
         />

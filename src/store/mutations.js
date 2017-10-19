@@ -16,9 +16,10 @@ export const mutations = {
 
     },
     [types.INIT_TODOS](state , todos){
-        state.todos.splice(0, ...todos)
+        state.todos.push(...todos)
     },
     [types.SET_TODOS](state , todos){
-        state.todos.splice(0, ...todos)
+        console.log(todos);
+        state.todos.splice(0, state.todos.length , ...todos);
     }
 }

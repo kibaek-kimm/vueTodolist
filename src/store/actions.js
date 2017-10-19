@@ -1,13 +1,11 @@
 import * as types from './mutation-types'
 
-export const addTodo = async ({commit} , contents) => {
-    const result = await commit(types.ADD_TODO , contents);
-    return result;
+export const addTodo = ({commit} , contents) => {
+    commit(types.ADD_TODO , contents);
 }
 
-export const deleteTodo = async ({commit} , index) => {
-    const result = await commit(types.DELETE_TODO , index);
-    return result;
+export const deleteTodo = ({commit} , index) => {
+    commit(types.DELETE_TODO , index);
 }
 
 export const setSearchedTodos = ({commit} , searchedTodos) => {
@@ -16,16 +14,12 @@ export const setSearchedTodos = ({commit} , searchedTodos) => {
     }
 }
 
-export const initTodos = ({commit} , contents) => {
-    // fetch('https://jsonplaceholder.typicode.com/todos?userId=2',{
-    fetch('https://jsonplaceholder.typicode.com/todos',{
+export const initTodos = async ({commit} , contents) => {
+    const json = await fetch('https://jsonplaceholder.typicode.com/todos',{
         method : 'GET'
     })
-    .then(response => response.json())
-    .then(json => {
-        console.log('THis is last then');
-        commit(types.INIT_TODOS , json);
-    });
+    .then(response => response.json());
+    commit(types.INIT_TODOS , json);
 }
 
 export const setTodos = ({commit} , todos) => {

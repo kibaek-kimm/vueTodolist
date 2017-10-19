@@ -1,3 +1,3 @@
-export const getTodos = (state ) => {
+export const getTodos = state => {
     return state.todos;
 }

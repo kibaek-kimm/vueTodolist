@@ -18,7 +18,6 @@
     import { mapActions , mapGetters } from 'vuex'
 
     export default {
-        props : ['passedinputedTodo'],
         data(){
             return {
                 inputedTodo : '',
@@ -35,6 +34,7 @@
         ]),
         {
             validateTodo(){
+
                 let isExsist = this.todos.filter(value => {
                     return value.contents == this.inputedTodo;
                 });
@@ -56,14 +56,12 @@
                     filteredTodos = this.todos;
                 }
 
-                console.log(filteredTodos);
-
                 this.setTodos(filteredTodos);
             }
         }),
         created(){
             this.todos = this.getTodos;
-            this.inputedTodo = this.passedinputedTodo;
+            console.log(`In created ${this.todos}`);
         }
     }
 </script>
